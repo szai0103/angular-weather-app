@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - chart/
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: Docker@2
+    condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
+    inputs:
+      containerRegistry: 'docker-registry'
+      repository: 'weather-app'
+      command: 'buildAndPush'
+      Dockerfile: 'Dockerfile'
+      tags: |
+        $(Build.BuildId)
+        latest

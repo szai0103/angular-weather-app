@@ -34,7 +34,9 @@ speed-measure-plugin*.json
 # misc
 /.sass-cache
 /connect.lock
+/karma-coverage
 /coverage
+.nyc_output
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
@@ -44,3 +46,15 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#testing examples
+/jasmine-tests
+/instrumented
+
+#linting reports
+lintingReport.json
+
+#sensitive info files
+.npmrc
+auth_config.ts
+cypress.env.json

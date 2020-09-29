@@ -1,0 +1,11 @@
+<div class="home">
+  <ng-container *ngIf="auth.isLoggedIn; else loggedOut">
+    <scu-headline loading-indicator-visible="true" class="home-message" element="h1">Welcome to {{title}}!</scu-headline>
+    <scu-button id="router-button" variant="default" color="primary" text="Country List" routerLink="country-list">
+    </scu-button>
+  </ng-container>
+  <ng-template #loggedOut>
+    <scu-headline loading-indicator-visible="true" class="home-message" element="h1">Please, Log in by clicking on the button
+      above to proceed!</scu-headline>
+  </ng-template>
+</div>

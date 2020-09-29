@@ -25,7 +25,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/@scu/core-ui/dist/collection/assets/flags",
+                "output": "assets/flags"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -64,9 +69,10 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "angular-weather-app:build"
+            "browserTarget": "angular-weather-app:build",
+            "extraWebpackConfig": "./cypress/coverage.webpack.js"
           },
           "configurations": {
             "production": {
@@ -103,7 +109,7 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "cypress/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -111,10 +117,35 @@
           }
         },
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@briebug/cypress-schematic:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "angular-weather-app:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-weather-app:serve:production"
+            }
+          }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
             "devServerTarget": "angular-weather-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-weather-app:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-weather-app:serve",
+            "watch": true,
+            "headless": false
           },
           "configurations": {
             "production": {
@@ -123,6 +154,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-weather-app"
 }
