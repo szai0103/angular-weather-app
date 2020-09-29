@@ -7,6 +7,10 @@
         "statements"
       ]
     },
+    "member-access": [
+      true,
+      "no-public"
+    ],
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
@@ -55,6 +59,7 @@
         ]
       }
     ],
+    "ordered-imports": true,
     "no-console": [
       true,
       "debug",
@@ -72,14 +77,16 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
+    "object-literal-sort-keys": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
     ],
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
+    "trailing-comma": false,
     "semicolon": {
       "options": [
         "always"
@@ -140,7 +147,8 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "ban-types": false
   },
   "rulesDirectory": [
     "codelyzer"

@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  angular-docker:
+    hostname: localhost
+    container_name: angular-weather-app-docker-container
+    build: .
+    ports:
+      - '4200:80'

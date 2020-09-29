@@ -1,0 +1,82 @@
+<scu-top-bar
+  id="top-bar-title"
+  label="{{title}}"
+  display-mode="fixed">
+  <div slot="top-bar-right">
+    <ng-container *ngIf="auth.isLoggedIn && auth.userProfile; else loggedOut">
+      <scu-icon
+        icon="user-topbar"
+        size="24"
+      ></scu-icon>
+      <scu-fly-out
+        id="greeting-name-dropdown"
+        type="top-bar"
+        label="Hi, {{auth.userProfile.name}}"
+        element="h3">
+        <scu-link
+          id="profile-link"
+          mode="sidebar"
+          href="user-profile"
+        >My Profile
+        </scu-link>
+        <scu-link
+          id="log-out-button"
+          mode="sidebar"
+          (click)="auth.logout()"
+        >{{"Log out" | uppercase}}
+        </scu-link>
+      </scu-fly-out>
+    </ng-container>
+    <ng-template #loggedOut>
+      <scu-link
+        id="login-button"
+        mode="nav-bar"
+        (click)="auth.login()"
+        element="h3"
+      >{{"Log in" | uppercase}}
+      </scu-link>
+    </ng-template>
+  </div>
+  <scu-nav-bar
+    more-label="MENU"
+    slot="nav-bar"
+    element="text-center">
+    <div slot="sidebar-header">
+      <scu-headline
+        element="h3">{{title}}
+      </scu-headline>
+    </div>
+    <div slot="actions">
+      <scu-nav-bar-action
+        class="home-link"
+        label="HOME"
+        href="/"
+      ></scu-nav-bar-action>
+      <scu-nav-bar-action
+        [disabled]="!auth.isLoggedIn"
+        class="countries-link"
+        label="COUNTRIES"
+        href="country-list"
+      ></scu-nav-bar-action>
+    </div>
+    <div slot="secondary">
+      <div *ngIf="auth.isLoggedIn">
+        <scu-link
+          id="profile-link-secondary"
+          mode="sidebar"
+          href="user-profile">My Profile
+        </scu-link>
+        <scu-link
+          id="log-out-secondary"
+          mode="sidebar"
+          (click)="auth.logout()">{{"Log out" | uppercase}}</scu-link>
+      </div>
+      <scu-link
+        *ngIf="!auth.isLoggedIn"
+        id="login-button-secondary"
+        mode="sidebar"
+        (click)="auth.login()"
+        element="h3">{{"Log in" | uppercase}}</scu-link>
+    </div>
+  </scu-nav-bar>
+</scu-top-bar>

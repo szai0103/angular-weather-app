@@ -1,0 +1,8 @@
+<div class="user-profile">
+  <scu-headline element="h2" id="details-headline">Your User Details:</scu-headline>
+  <ng-container *ngIf="user">
+    <img id="profile-image" src="{{user.picture}}" alt="No image available"/>
+    <scu-headline id="name" element="h3">Name: {{user.name}}</scu-headline>
+    <scu-headline id="email" element="h3">Email: {{user.email}}</scu-headline>
+  </ng-container>
+</div>
