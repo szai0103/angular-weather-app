@@ -1,8 +1,13 @@
 const cypressTypeScriptPreprocessor = require('./cy-ts-preprocessor');
-const registerCodeCoverageTasks = require("@cypress/code-coverage/task");
+const browserify = require('@cypress/browserify-preprocessor')
+const options = browserify.defaultOptions;
+options.browserifyOptions.transform[1][1].babelrc = true;
 
 module.exports = (on, config) => {
-  registerCodeCoverageTasks(on, config);
-  on('file:preprocessor', cypressTypeScriptPreprocessor);
+  on('file:preprocessor', cypressTypeScriptPreprocessor, browserify({
+    ...options,
+    typescript: require.resolve('typescript')
+  }));
+  on('task', require('cypress-istanbul/task'));
   return config;
 };

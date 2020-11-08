@@ -15,9 +15,14 @@
 
 import "./commands";
 
+// @ts-ignore
 require("core-js/es/reflect");
+// @ts-ignore
 require("core-js/stable/reflect");
+// @ts-ignore
 require("core-js/features/reflect");
+// @ts-ignore
 require("cypress-angular-unit-test/support");
 
-import "@cypress/code-coverage/support";
+import "cypress-istanbul/support";
+

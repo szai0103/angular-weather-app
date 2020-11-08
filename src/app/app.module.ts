@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CountryListComponent} from "./components/country-list/country-list.component";
 import {HttpClientModule} from "@angular/common/http";
 import {CallbackComponent} from "./components/callback/callback.component";
+import { SimpleTestComponent } from './components/simple-test/simple-test.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {CallbackComponent} from "./components/callback/callback.component";
     HomeComponent,
     CityListComponent,
     CountryListComponent,
-    CallbackComponent
+    CallbackComponent,
+    SimpleTestComponent
   ],
   imports: [
     BrowserModule,

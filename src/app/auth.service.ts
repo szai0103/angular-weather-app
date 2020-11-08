@@ -88,7 +88,7 @@ export class AuthService {
   }
 
   scheduleRenewal() {
-    const expiresAt = JSON.parse(localStorage.getItem("expires_at") || "");
+    const expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     const delay = expiresAt - Date.now();
     if (delay > 0) {
       this.tokenRenewalTimeout = setTimeout(() => {

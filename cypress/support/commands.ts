@@ -43,6 +43,8 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 /// <reference types="Cypress" />
+import "cypress-localstorage-commands";
+
 /**
  * Adds custom command "cy.dataCy" to the global "cy" object
  *

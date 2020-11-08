@@ -3,13 +3,8 @@ module.exports = {
     rules: [
       {
         test: /\.(js|ts)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            // presets: ['@babel/preset-env'],
-            plugins: ['babel-plugin-istanbul']
-          }
-        },
+        loader: 'istanbul-instrumenter-loader',
+        options: { esModules: true },
         enforce: 'post',
         include: require('path').join(__dirname, '..', 'src/app'),
         exclude: [
